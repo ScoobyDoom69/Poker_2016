@@ -53,3 +53,4 @@ def test_full_house():
     not_f_h_hand = ['9','10','J','4','A']
     assert full_house(f_h_hand) == True
     assert full_house(not_f_h_hand) == False
+
