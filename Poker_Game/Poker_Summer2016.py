@@ -45,12 +45,8 @@ def straight_flush(ranks, suits):
             ranks[i] = '12'
         elif ranks[i] == 'K':
             ranks[i] = '13'
-        if ranks.count('4') > 0:
-            if ranks[i] == 'A':
-                ranks[i] = '1'
-        else:
-            if ranks[i] == 'A':
-                ranks[i] = '14'
+        elif ranks[i] == 'A':
+            ranks[i] = '1'
     for i, rank in enumerate(ranks):
         ranks[i] = int(rank)
     ranks.sort()
@@ -103,12 +99,8 @@ def straight(ranks, suits):
             ranks[i] = '12'
         elif ranks[i] == 'K':
             ranks[i] = '13'
-        if ranks.count('4') > 0:
-            if ranks[i] == 'A':
-                ranks[i] = '1'
-        else:
-            if ranks[i] == 'A':
-                ranks[i] = '14'
+        elif ranks[i] == 'A':
+            ranks[i] = '1'
     for i, rank in enumerate(ranks):
         ranks[i] = int(rank)
     ranks.sort()
