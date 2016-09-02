@@ -91,3 +91,18 @@ def test_full_house():
     assert full_house(f_h_hand) == True
     assert full_house(not_f_h_hand) == False
 
+def test_alphas():
+    ranks = ['J', 'Q', 'K', 'A']
+    for i in range(len(ranks)):
+        if ranks[i] == 'J':
+            ranks[i] = '11'
+        elif ranks[i] == 'Q':
+            ranks[i] = '12'
+        elif ranks[i] == 'K':
+            ranks[i] = '13'
+        elif ranks[i] == 'A':
+            ranks[i] = '1'
+    assert ranks.count('11') == 1
+    assert ranks.count('12') == 1
+    assert ranks.count('13') == 1
+    assert ranks.count('1') == 1
