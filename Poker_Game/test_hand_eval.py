@@ -9,6 +9,36 @@ def test_no_dupes():
     for card in hand:
         assert hand.count(card) == 1
 
+def test_get_rank():
+    ranks_hand = [Card(rank='4', suit='♥'), Card(rank='K', suit='♣'), Card(rank='A', suit='♦'),
+                  Card(rank='2', suit='♠'), Card(rank='9', suit='♠')]
+    assert get_rank(ranks_hand) == ['4', 'K', 'A', '2', '9']
+
+def test_get_suit():
+    suits_hand = [Card(rank='4', suit='♥'), Card(rank='K', suit='♣'), Card(rank='A', suit='♦'),
+                  Card(rank='2', suit='♠'), Card(rank='9', suit='♠')]
+    assert get_suit(suits_hand) == ['♥','♣','♦','♠','♠']
+
+def test_high_card():
+    flush_hand = [Card(rank='4', suit='♥'), Card(rank='K', suit='♥'), Card(rank='A', suit='♥'),
+                  Card(rank='2', suit='♥'), Card(rank='9', suit='♥')]
+    straight_flush_hand = [Card(rank='4', suit='♥'), Card(rank='3', suit='♥'), Card(rank='A', suit='♥'),
+                  Card(rank='2', suit='♥'), Card(rank='5', suit='♥')]
+    straight_hand = [Card(rank='4', suit='♥'), Card(rank='3', suit='♣'), Card(rank='A', suit='♦'),
+                  Card(rank='2', suit='♠'), Card(rank='5', suit='♠')]
+    royal_flush_hand = [Card(rank='Q', suit='♥'), Card(rank='K', suit='♥'), Card(rank='A', suit='♥'),
+                  Card(rank='J', suit='♥'), Card(rank='10', suit='♥')]
+    pair_hand = [Card(rank='Q', suit='♥'), Card(rank='Q', suit='♥'), Card(rank='A', suit='♥'),
+                  Card(rank='J', suit='♥'), Card(rank='10', suit='♥')]
+    high_card_hand = [Card(rank='4', suit='♥'), Card(rank='K', suit='♣'), Card(rank='A', suit='♦'),
+                  Card(rank='2', suit='♠'), Card(rank='9', suit='♠')]
+    assert high_card(get_rank(flush_hand), get_suit(flush_hand)) == False
+    assert high_card(get_rank(straight_flush_hand), get_suit(straight_flush_hand)) == False
+    assert high_card(get_rank(straight_hand), get_suit(straight_hand)) == False
+    assert high_card(get_rank(royal_flush_hand), get_suit(royal_flush_hand)) == False
+    assert high_card(get_rank(pair_hand), get_suit(pair_hand)) == False
+    assert high_card(get_rank(high_card_hand), get_suit(high_card_hand)) == True
+
 def test_pair():
     pair_hand = ['9','9','A','Q','J']
     no_pair_hand = ['8','9','A','Q','J']
@@ -22,16 +52,6 @@ def test_two_pair():
     not_two_pair = ['9','9','A','Q','J']
     assert two_pair(two_pair_hand) == True
     assert two_pair(not_two_pair) == False
-
-def test_get_rank():
-    ranks_hand = [Card(rank='4', suit='♥'), Card(rank='K', suit='♣'), Card(rank='A', suit='♦'),
-                  Card(rank='2', suit='♠'), Card(rank='9', suit='♠')]
-    assert get_rank(ranks_hand) == ['4', 'K', 'A', '2', '9']
-
-def test_get_suit():
-    suits_hand = [Card(rank='4', suit='♥'), Card(rank='K', suit='♣'), Card(rank='A', suit='♦'),
-                  Card(rank='2', suit='♠'), Card(rank='9', suit='♠')]
-    assert get_suit(suits_hand) == ['♥','♣','♦','♠','♠']
 
 def test_three_of_a_kind():
     three_kind_hand = ['9','9','9','A','J']
