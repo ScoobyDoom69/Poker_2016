@@ -61,6 +61,23 @@ def test_three_of_a_kind():
     assert three_of_a_kind(not_three_kind) == False
     assert three_of_a_kind(f_h_hand) == False
 
+def test_straight():
+    straight_flush_hand = [Card(rank='4', suit='♥'), Card(rank='3', suit='♥'), Card(rank='A', suit='♥'),
+                  Card(rank='2', suit='♥'), Card(rank='5', suit='♥')]
+    royal_flush_hand = [Card(rank='Q', suit='♥'), Card(rank='K', suit='♥'), Card(rank='A', suit='♥'),
+                  Card(rank='J', suit='♥'), Card(rank='10', suit='♥')]
+    not_straight_hand = [Card(rank='4', suit='♥'), Card(rank='K', suit='♣'), Card(rank='A', suit='♦'),
+                  Card(rank='2', suit='♠'), Card(rank='9', suit='♠')]
+    straight_hand1 =  [Card(rank='4', suit='♥'), Card(rank='3', suit='♣'), Card(rank='A', suit='♦'),
+                  Card(rank='2', suit='♠'), Card(rank='5', suit='♠')]
+    straight_hand2 = [Card(rank='J', suit='♥'), Card(rank='Q', suit='♣'), Card(rank='K', suit='♦'),
+                  Card(rank='10', suit='♠'), Card(rank='9', suit='♠')]
+    assert straight(get_rank(straight_flush_hand), get_suit(straight_flush_hand)) == False
+    assert straight(get_rank(royal_flush_hand), get_suit(royal_flush_hand)) == False
+    assert straight(get_rank(not_straight_hand), get_suit(not_straight_hand)) == False
+    assert straight(get_rank(straight_hand1), get_suit(straight_hand1)) == True
+    assert straight(get_rank(straight_hand2), get_suit(straight_hand2)) == True
+
 def test_flush():
     flush_hand = ['♠','♠','♠','♠','♠']
     not_flush_hand = ['♥','♣','♦','♠','♠']
