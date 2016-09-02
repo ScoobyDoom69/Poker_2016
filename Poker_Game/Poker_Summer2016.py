@@ -160,7 +160,8 @@ def high_card(ranks, suits):
         return False
     h_c = set()
     for rank in ranks:
-        h_c.add(rank)
+        if ranks.count(rank) == 1:
+            h_c.add(rank)
     if len(h_c) == 5:
         return True
     else:
