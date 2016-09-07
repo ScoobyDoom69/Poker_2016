@@ -126,6 +126,15 @@ def test_straight_flush():
     assert straight_flush(get_rank(not_straight_flush), get_suit(not_straight_flush)) == False
 
 
+def test_royal_flush():
+    royal_flush_hand = [Card(rank='Q', suit='♥'), Card(rank='K', suit='♥'), Card(rank='A', suit='♥'),
+                        Card(rank='J', suit='♥'), Card(rank='10', suit='♥')]
+    not_royal_flush = [Card(rank='4', suit='♥'), Card(rank='3', suit='♥'), Card(rank='A', suit='♥'),
+                           Card(rank='2', suit='♥'), Card(rank='5', suit='♥')]
+    assert royal_flush(get_rank(royal_flush_hand), get_suit(royal_flush_hand)) == True
+    assert royal_flush(get_rank(not_royal_flush), get_suit(not_royal_flush)) == False
+
+
 def test_alphas():
     ranks = ['J', 'Q', 'K', 'A']
     for i in range(len(ranks)):
