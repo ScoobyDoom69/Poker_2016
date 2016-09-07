@@ -119,8 +119,11 @@ def test_straight_flush():
                         Card(rank='J', suit='♥'), Card(rank='10', suit='♥')]
     straight_flush_hand = [Card(rank='4', suit='♥'), Card(rank='3', suit='♥'), Card(rank='A', suit='♥'),
                            Card(rank='2', suit='♥'), Card(rank='5', suit='♥')]
+    not_straight_flush = [Card(rank='4', suit='♥'), Card(rank='3', suit='♣'), Card(rank='A', suit='♦'),
+                      Card(rank='2', suit='♠'), Card(rank='5', suit='♠')]
     assert straight_flush(get_rank(straight_flush_hand), get_suit(straight_flush_hand)) == True
     assert straight_flush(get_rank(royal_flush_hand), get_suit(royal_flush_hand)) == False
+    assert straight_flush(get_rank(not_straight_flush), get_suit(not_straight_flush)) == False
 
 
 def test_alphas():
