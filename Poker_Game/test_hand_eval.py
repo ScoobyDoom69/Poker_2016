@@ -107,6 +107,13 @@ def test_full_house():
     assert full_house(not_f_h_hand) == False
 
 
+def test_four_of_a_kind():
+    four_kind_hand = ['5', '5', '5', '5', '3']
+    not_four_kind = ['5', '5', '5', '4', '3']
+    assert four_of_a_kind(four_kind_hand) == True
+    assert four_of_a_kind(not_four_kind) == False
+
+
 def test_alphas():
     ranks = ['J', 'Q', 'K', 'A']
     for i in range(len(ranks)):
