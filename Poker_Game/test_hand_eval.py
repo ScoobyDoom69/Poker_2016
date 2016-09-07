@@ -114,6 +114,15 @@ def test_four_of_a_kind():
     assert four_of_a_kind(not_four_kind) == False
 
 
+def test_straight_flush():
+    royal_flush_hand = [Card(rank='Q', suit='♥'), Card(rank='K', suit='♥'), Card(rank='A', suit='♥'),
+                        Card(rank='J', suit='♥'), Card(rank='10', suit='♥')]
+    straight_flush_hand = [Card(rank='4', suit='♥'), Card(rank='3', suit='♥'), Card(rank='A', suit='♥'),
+                           Card(rank='2', suit='♥'), Card(rank='5', suit='♥')]
+    assert straight_flush(get_rank(straight_flush_hand), get_suit(straight_flush_hand)) == True
+    assert straight_flush(get_rank(royal_flush_hand), get_suit(royal_flush_hand)) == False
+
+
 def test_alphas():
     ranks = ['J', 'Q', 'K', 'A']
     for i in range(len(ranks)):
